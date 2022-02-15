@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-
+const dotenv = require("dotenv").config();
 module.exports = () => {
-    mongoose.connect("mongodb+srv://challengeUser:WUMglwNBaydH8Yvu@challenge-xzwqd.mongodb.net/getir-case-study?retryWrites=true");
+    mongoose.connect(process.env.DATABASE_URL);
 
     mongoose.connection.on('open', () => {
         console.log('MongoDB: Connected');
