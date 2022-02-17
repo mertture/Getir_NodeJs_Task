@@ -5,7 +5,6 @@ const validation = require("../middleware/validation");
 const record = require("../models/models");
 
 router.post('/fetchRecordsByDateandCount', async (req, res) => {
-  console.log(req.body);
     try {
     var records = await record.aggregate([
         // Filter before adding total count param to reduce time and effort for fetch process
