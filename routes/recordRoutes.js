@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-
-
+const validation = require("../middleware/validation");
 const record = require("../models/models");
 
-router.post('/fetchRecordsByDateandCount', async (req, res) => {
+router.post('/fetchRecordsByDateandCount', validation.recordValidation, async (req, res) => {
 
     try {
     var records = await record.aggregate([
@@ -13,8 +12,8 @@ router.post('/fetchRecordsByDateandCount', async (req, res) => {
         {
           $match: {
             createdAt: {
-              $gte: new Date(req.body.startDate),
-              $lte: new Date(req.body.endDate),
+              $gte: (req.body.startDate),
+              $lte: (req.body.endDate),
             },
           },
         },
@@ -50,16 +49,9 @@ router.post('/fetchRecordsByDateandCount', async (req, res) => {
       return res.status(200).json({ code: 0, msg: "Success", records });
     }
     catch (err) {
-        console.log(err);
-        res.status(400).send(err);
+        res.status(err.httpStatus).json({ code: 2, msg: err.message});
     }
 
 })
-
-router.post("/", (req,res) => {
-    console.log("abc");
-    res.status(200).send("it works");
-})
-
 
 module.exports = router;
