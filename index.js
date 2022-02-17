@@ -28,4 +28,4 @@ app.use("", (req, res) => {
 
 
 
-app.listen(process.env.PORT || 5000, () => console.log(`Server is running on port number ${port}`))
+app.listen(process.env.PORT || 5000, () => console.log(`Server is running on port number ${process.env.PORT || 5000}`))
