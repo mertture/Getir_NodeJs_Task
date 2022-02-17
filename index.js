@@ -13,7 +13,7 @@ app.use(cors ({origin: "*", methods: "*"}));
 
 app.use("/", recordsRouter);
 
-app.use("/fetchRecordsByDateandCount", recordsRouter);
+app.use("/fetchRecordsByDateandCount", recordsRouter)
 
 app.use("", (req, res) => {
     // Right route but GET request err

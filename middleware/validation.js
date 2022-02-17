@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 module.exports = { 
     recordValidation: async(req, res, next) => {
-    console.log(req);
+    console.log(req.body);
     const recordRequestSchema = Joi.object({
       startDate: Joi.date().iso().required(),
       endDate: Joi.date().iso().required(),
@@ -21,7 +21,6 @@ module.exports = {
     
     }
     catch (error) {
-        console.log(req.body);
         return res.status(400).send({code: 1, msg: `Validation error: ${error.message}`});
     }
   }
