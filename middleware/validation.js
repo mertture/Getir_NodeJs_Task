@@ -2,6 +2,7 @@ const Joi = require("joi");
 
 module.exports = { 
     recordValidation: async(req, res, next) => {
+    console.log(req);
     const recordRequestSchema = Joi.object({
       startDate: Joi.date().iso().required(),
       endDate: Joi.date().iso().required(),
