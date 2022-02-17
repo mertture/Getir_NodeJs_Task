@@ -4,7 +4,7 @@ const router = express.Router();
 const validation = require("../middleware/validation");
 const record = require("../models/models");
 
-router.post('/fetchRecordsByDateandCount', validation.recordValidation, async (req, res) => {
+router.route('/fetchRecordsByDateandCount').post(validation.recordValidation, async (req, res) => {
 
     try {
     var records = await record.aggregate([
