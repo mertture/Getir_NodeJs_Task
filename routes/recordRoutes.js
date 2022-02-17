@@ -7,8 +7,9 @@ const record = require("../models/models");
 router.route('/fetchRecordsByDateandCount').post(validation.recordValidation, async (req, res) => {
 
     try {
+    // Query in Mongo
     var records = await record.aggregate([
-        // Filter before adding total count param to reduce time and effort for fetch process
+        // Filter between start-end date before calculating count
         {
           $match: {
             createdAt: {
@@ -17,14 +18,14 @@ router.route('/fetchRecordsByDateandCount').post(validation.recordValidation, as
             },
           },
         },
-        // Add totalCount field to response payload
+        // Create totalCount attribute by summing count array
         {
           $addFields: {
             totalCount: { $sum: "$counts" },
           },
         },
 
-        // Query for totalCount property
+        // Filter totalCount between min-max Count
         {
           $match: {
             totalCount: {
@@ -35,7 +36,7 @@ router.route('/fetchRecordsByDateandCount').post(validation.recordValidation, as
         },
 
 
-         // Prepare the payload for requested format
+         // Define response payload attributes
          {
             $project: {
               _id: 0,
@@ -49,6 +50,7 @@ router.route('/fetchRecordsByDateandCount').post(validation.recordValidation, as
       return res.status(200).json({ code: 0, msg: "Success", records });
     }
     catch (err) {
+      // error about database
         res.status(err.httpStatus).json({ code: 2, msg: err.message});
     }
 

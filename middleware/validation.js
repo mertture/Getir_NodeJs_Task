@@ -2,7 +2,8 @@ const Joi = require("joi");
 
 module.exports = { 
     recordValidation: async(req, res, next) => {
-    console.log(JSON.stringify(req.body));
+
+    // Validate body input
     const recordRequestSchema = Joi.object({
       startDate: Joi.date().iso().required(),
       endDate: Joi.date().iso().required(),
@@ -10,7 +11,7 @@ module.exports = {
       maxCount: Joi.number().min(0).greater(Joi.ref("minCount")).required(),
     });
     const options = {
-        abortEarly: false, // include all errors
+        abortEarly: false, // all errors
     };
 
     try {
