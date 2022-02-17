@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+// Record schema for raw response from database
 var recordSchema = new Schema({
     
     key: {

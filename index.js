@@ -3,15 +3,14 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
-
 const database = require("./database/database")();
-
 const recordsRouter = require("./routes/recordRoutes");
 
 app.use(bodyParser.json());
 app.use(cors ({origin: "*", methods: "*"}));
 
 app.use("/", recordsRouter);
+
 
 app.use("/fetchRecordsByDateandCount", recordsRouter)
 
@@ -29,4 +28,6 @@ app.use("", (req, res) => {
 
 
 
-app.listen(process.env.PORT, () => console.log(`Server is running on port number ${process.env.PORT}`))
+var server = app.listen(process.env.PORT, () => console.log(`Server is running on port number ${process.env.PORT}`))
+
+module.exports = server;
