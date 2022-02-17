@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 module.exports = { 
     recordValidation: async(req, res, next) => {
-    const recordSchema = Joi.object({
+    const recordRequestSchema = Joi.object({
       startDate: Joi.date().iso().required(),
       endDate: Joi.date().iso().required(),
       minCount: Joi.number().min(0).required(),
@@ -14,12 +14,13 @@ module.exports = {
 
     try {
         
-        const recordBody = await recordSchema.validateAsync(req.body, options);
+        const recordBody = await recordRequestSchema.validateAsync(req.body, options);
         req.body = recordBody;
         next();
     
     }
     catch (error) {
+        console.log(req.body);
         return res.status(400).send({code: 1, msg: `Validation error: ${error.message}`});
     }
   }
