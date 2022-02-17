@@ -8,7 +8,7 @@ const database = require("./database/database")();
 const recordsRouter = require("./routes/recordRoutes");
 
 app.use(bodyParser.json());
-
+app.use(cors ({origin: "*", methods: "*"}));
 
 app.use("/", recordsRouter);
 
