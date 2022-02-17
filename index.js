@@ -8,12 +8,12 @@ const database = require("./database/database")();
 
 const recordsRouter = require("./routes/recordRoutes");
 
-const jsonParser = (bodyParser.json());
+app.use(bodyParser.json());
 app.use(cors ({origin: "*", methods: "*"}));
 
 app.use("/", recordsRouter);
 
-app.use("/fetchRecordsByDateandCount", jsonParser, recordsRouter);
+app.use("/fetchRecordsByDateandCount", recordsRouter);
 
 app.use("", (req, res) => {
     // Right route but GET request err
