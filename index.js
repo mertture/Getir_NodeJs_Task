@@ -28,6 +28,6 @@ app.use("", (req, res) => {
 
 
 
-app.listen(process.env.PORT, () => console.log(`Server is running on port number ${process.env.PORT}`))
+var server = app.listen(process.env.PORT, () => console.log(`Server is running on port number ${process.env.PORT}`))
 
-module.exports = app;
+module.exports = server;

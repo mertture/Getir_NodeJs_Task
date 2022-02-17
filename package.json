@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "engines": {
     "node": "14.17.1"

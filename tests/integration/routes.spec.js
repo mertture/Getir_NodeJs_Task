@@ -6,7 +6,9 @@ const app = require("../../index");
 
 describe("Testing the /fetchRecordsByDateandCount route", () => {
 
+  // Run tests max time
   jest.setTimeout(10000);
+
   // before testing connect to mongo database
   beforeAll(() => {
     Mongoose.connect(process.env.DATABASE_URL);
@@ -28,5 +30,6 @@ describe("Testing the /fetchRecordsByDateandCount route", () => {
   // after testing should disconnect from database
   afterAll((done) => {
     Mongoose.disconnect(done);
+    app.close();
   });
 });
