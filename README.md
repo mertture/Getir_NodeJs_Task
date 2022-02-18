@@ -116,3 +116,8 @@ Integration testing for data fetch, data validation and route request done here.
 ![image](./postmanImages/Wrong1.png)
 
 
+## Testing result
+
+`Result of 9 different integration test for database, data validation and routes`
+
+![image](./postmanImages/Testing1.png)
