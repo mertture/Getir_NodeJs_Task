@@ -17,11 +17,11 @@ app.use("/fetchRecordsByDateandCount", recordsRouter)
 app.use("", (req, res) => {
     // Right route but GET request err
     if (req.url === "/fetchRecordsByDateandCount" && req.method !== "POST") {
-        res.status(405).send({ code: 2, msg: "Only post requests are allowed"});
+        res.status(405).send({ code: 3, msg: "Only post requests are allowed"});
     }
     // Wrong route
     else {
-        res.status(404).send({code: 3, msg: "Route not found"});
+        res.status(404).send({code: 4, msg: "Route not found"});
     }
 })
     
