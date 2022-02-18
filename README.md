@@ -4,6 +4,8 @@ The project is a RESTful API that is developed with NodeJS, ExpressJS and MongoD
 
 The single endpoint **"/fetchRecordsByDateandCount"**
 
+It is deployed to Heroku **https://getir-nodejs-task.herokuapp.com/**
+
 ## How to Run
 
 For the first time
